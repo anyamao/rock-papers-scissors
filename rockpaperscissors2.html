@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Exercise</title>
+  <link rel ="stylesheet" href = "rockpaperscissors2.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+
+
+
+
+</head>
+<body>
+
+  <div class = "title">
+    Rock Paper Scissors Game!
+  </div>
+  <div class = "options-div">
+    <div class = "inner=div">
+      <button class = "option"  onclick="playGame('rock')">
+      <img class = "option-image"  src = "rock-emoji.png">
+    </button>
+    </div>
+
+    <div class = "inner=div">
+        <button class = "option" onclick="playGame('paper')">
+    <img class = "option-image" src = "paper-emoji.png">
+  </button>
+    </div>
+
+    <div class = "inner=div">
+        <button class = "option"  onclick = "playGame('scissors')">
+    <img  class = "option-image" src = "scissors-emoji.png">
+  </button>
+    </div>
+
+  </div>
+
+
+
+  <p class = "js-result">
+  </p>
+  <p class = "js-moves">
+
+  </p>
+
+  <p class = "js-score">
+  </p>
+  <button class = "reset" onclick= "score.wins = 0; score.losses = 0; score.ties = 0
+  localStorage.removeItem('score'), 
+  updateEverything();">
+    Reset score
+  </button>
+
+
+
+
+
+
+
+</body> 
+
+
+
+
+
+
+
+<script>
+
+
+  let result ='';
+  const score =JSON.parse(localStorage.getItem('score')) || {
+      wins: 0,
+      losses: 0,
+      ties:0
+  };
+
+
+
+  let ComputerMove = '';
+  let playerMove = '';
+  function playGame(player){
+    computerMove = getMove();
+    playerMove = player;
+    if (playerMove === 'rock'){
+      if (computerMove === 'rock')
+        result = 'Tie';
+      else if (computerMove === 'paper')
+        result = 'You lost';
+      else if (computerMove === 'scissors')
+        result = 'You won';
+    }
+
+    else if (playerMove === 'paper'){
+      if (computerMove === 'paper')
+        result = 'Tie';
+      else if (computerMove === 'scissors')
+        result = 'You lost';
+      else if (computerMove === 'rock')
+        result = 'You won';
+    }
+    else if (playerMove === 'scissors'){
+      if (computerMove === 'scissors')
+        result = 'Tie';
+      else if (computerMove === 'rock')
+        result = 'You lost';
+      else if (computerMove === 'paper')
+        result = 'You won';
+
+        
+    }
+    
+    if (result ==='You won')
+      score.wins++;
+    else if (result ==='Tie')
+      score.ties++;
+    else if (result === 'You lost')
+      score.losses++;
+
+    localStorage.setItem('score',JSON.stringify(score));
+    updateEverything();
+
+  }
+  
+
+
+  if (result ==='You won.')
+    score.wins++;
+  else if (result ==='Tie.')
+    score.ties++;
+  else if (result === 'You lost.')
+    score.losses++;
+  
+  function updateEverything(){
+    document.querySelector('.js-score')
+    .innerHTML =  ` Wins: ${score.wins}, Losses ${score.losses}, Ties ${score.ties}`;
+  
+    document.querySelector('.js-result')
+    .innerHTML =  `${result} `;
+    
+    const playerEmoji = getEmojiHTML(playerMove);
+    const computerEmoji = getEmojiHTML(computerMove);
+    
+    document.querySelector('.js-moves')
+    .innerHTML =  `You chose ${playerEmoji} Computer chose ${computerEmoji} `;
+  }
+
+  function getEmojiHTML(move){
+    if (move ==='rock')
+      return '<img class ="option-image" src = "rock-emoji.png" >';
+    else if (move === 'paper')
+      return '<img class ="option-image" src = "paper-emoji.png" >';
+    else if (move === 'scissors')
+      return '<img class ="option-image" src = "scissors-emoji.png">';
+  }
+
+
+
+  function getMove(){
+    let random = Math.random();
+    if ( random < 1/3)
+      return 'rock';
+    else if (random  < 2/3)
+      return 'paper';
+    else 
+      return 'scissors';
+  }
+</script>
+
+
+
+</html>

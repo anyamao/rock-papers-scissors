@@ -1,0 +1,109 @@
+
+p,div,button{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color:rgb(25, 25, 25);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    margin:0;
+    padding:0;
+    text-align:center;
+
+
+}
+.title{
+    font-size:30px;
+    font-weight:bold;
+    color:white;
+    margin-bottom:30px;
+    vertical-align:center;
+}
+.js-result,.js-moves,.js-score{
+    color:white;
+    font-size:18px;
+}
+.js-result{
+    font-size:25px;
+    font-weight:bold;
+}
+.option{
+    
+    margin:10px;
+    border-radius:90px;
+    color:black;
+    background-color:rgba(255, 255, 255, 0);
+    padding:8px;
+    border-style:solid;
+    border-width:5px;
+    border-color:white;
+    font-size:18px;
+    transition:border-color 0.3s,padding 0.3s;
+
+}
+.option:hover{
+    border-color:yellow;
+    padding:12px;
+    
+
+}
+.option:active{
+    border-color:rgb(184, 119, 0);
+    padding:12px;
+    
+
+}
+.option-image{
+    width:100px;
+    padding:20px;
+        cursor:pointer;
+}
+
+.options-div{
+    background-color:rgba(0, 0, 0, 0.342);
+    padding:30px;
+    padding-bottom:50px;
+    border-radius:150px;
+    padding-left:60px;
+    padding-right:60px;
+    max-height:170px;
+    display:flex;
+
+}
+
+
+.inner-div{
+    display:inline-block;
+    justify-content:center;
+    padding:10px;
+
+}
+
+
+
+
+
+.reset{
+    border-radius:10px;
+    color:black;
+    background-color:white;
+    padding:10px;
+    padding-left:15px;
+    padding-right:15px;
+    border-style:none;
+    font-size:20px;
+    transition:background-color 0.3s,padding 0.3s,padding-left 0.3s, padding-right 0.3s;
+    cursor:pointer;
+}
+.reset:hover{
+    padding:12px;
+    padding-left:20px;
+    padding-right:20px;
+    background-color:rgb(233, 233, 163);
+}
+.reset:active{
+    background-color: rgb(184, 119, 0);
+}
